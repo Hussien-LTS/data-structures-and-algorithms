@@ -51,13 +51,20 @@ CHALLENGE 4
 Write a function named alphabetizeBetter that takes in an array of strings and returns the same array, with the strings sorted alphabetically. Capitalization should not change the sort order of two strings.
 
 For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, and so is ['alphabet', 'Alphabet', 'carrot', 'Zebra'].
+
+var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase();
+ if (nameA < nameB) //sort string ascending
+  return -1;
+ if (nameA > nameB)
+  return 1;
+ return 0; //default return value (no sorting
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetizeBetter = (arr) => {
   // Solution code here...
   arr.sort((a, b) =>{
-    return a.toUpperCace() > b.toUpperCace();
-  });
+    return a.toLowerCase() > b.toLowerCase();
+  })
   return arr;
 };
 
@@ -141,7 +148,7 @@ If two people have the same full name, the younger one should come first. Do not
 const sortPeopleBetter = (arr) => {
   // Solution code here...
   arr.sort((a,b) =>{
-    return a.firstName.lastName < b.firstName.lastName;
+    return a.lastName < b.lastName;
   })
   return arr;
 };
