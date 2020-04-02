@@ -61,16 +61,18 @@ Return the modified array.
 
 const removeOne = (num, arr) => {
   // Solution code here...
-  if ( num === num%3 === 2){
-    arr.pop(num);
+  if (num %3 === 2){
+    arr.pop();
   }
-  return arr;
+  // return arr;
 };
 
 const removeElements = (arr, callback) => {
   // Solution code here...
   for ( let f = 0 ; f < arr.length ; f++){
-    callback[f];
+    let value = arr[f];
+
+    callback(value, arr);
   }
   return arr;
 };
