@@ -73,6 +73,7 @@ const removeElements = (arr, callback) => {
     let value = arr[f];
 
     callback(value, arr);
+    
   }
   return arr;
 };
