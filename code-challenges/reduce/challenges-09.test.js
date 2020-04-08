@@ -81,7 +81,7 @@ const returnNames = (arr) => {
   let names = arr.reduce((acc,val,index)=>{
     acc = val.name
   },{})
-  returnNames(names) 
+  // returnNames(names) 
 };
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
