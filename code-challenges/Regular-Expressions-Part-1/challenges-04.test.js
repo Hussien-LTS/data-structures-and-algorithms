@@ -14,8 +14,8 @@ For example:
 
 const isNum = (input) => {
   // Solution code here...
-  let reg=/\d/;
-  return  reg.test(input);
+  let reg = /\d/;
+  return reg.test(input);
 
 };
 
@@ -27,12 +27,12 @@ Write a function named isCapitalized that takes in a string. This function shoul
 Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
-const isCapitalized = (str) => {
+const isCapitalized = (str) =>
   // Solution code here...
-  const regex = /\b[A-Z]\w*/g;
+  // const regex = (/[A-Z]\w+/g) || [];
 
-  return str.match(regex);
-};
+  str.match(/[A-Z]\w+/g) || [];
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -42,6 +42,14 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 
 const citiesAtoJ = (arr) => {
   // Solution code here...
+  const regex = /^[A-J]\w+/g;
+  const arr2 = [];
+  const needed = (str) => {
+    if (str.match(regex))
+      arr2.push(str);
+  }
+  arr.forEach(needed);
+  return arr2;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -58,16 +66,15 @@ Do not use the vertical bar (pipe) in your pattern.
 
 const matchMonth = (input) => {
   // Solution code here...
-  let sec1=/October/g;
-let sec2=/Oct/g;
-let sec3=/october/g;
-let sec4=/oct/g;
-if (sec1.test(input) || prt2.test(input) || prt3.test(input) || prt4.test(input) )
-{
+  let sec1 = /October/g;
+  let sec2 = /Oct/g;
+  let sec3 = /october/g;
+  let sec4 = /oct/g;
+  if (sec1.test(input) || sec2.test(input) || sec3.test(input) || sec4.test(input)) {
     return true;
-     
-}
-else return false;
+
+  }
+  else return false;
 };
 
 
@@ -81,9 +88,9 @@ For example, if given the string "Hello, and have a wonderful day!", the word "H
 The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "a ", "wonderful "].
 ------------------------------------------------------------------------------------------------ */
 
-const noPunctuation = str => {
+const noPunctuation = str => 
   // Solution code here...
-};
+  str.match(/\w+\s/g);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -146,7 +153,7 @@ describe('Testing challenge 2', () => {
   test('It should only return words that begin with a capital letter', () => {
     const capitalResult = isCapitalized('We only want to Return the Words that begin With a capital Letter');
 
-    expect(capitalResult).toStrictEqual([ 'We', 'Return', 'Words', 'With', 'Letter' ]);
+    expect(capitalResult).toStrictEqual(['We', 'Return', 'Words', 'With', 'Letter']);
     expect(capitalResult.length).toStrictEqual(5);
 
     expect(isCapitalized('Given by our hand in the meadow that is called Runnymede, between Windsor and Staines, on the fifteenth day of June in the seventeenth year of our reign (i.e. 1215: the new regnal year began on 28 May).')).toStrictEqual(['Given', 'Runnymede', 'Windsor', 'Staines', 'June', 'May']);
@@ -193,7 +200,7 @@ describe('Testing challenge 5', () => {
   const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia vel massa sed egestas. Nunc faucibus iaculis elit, a scelerisque enim condimentum sed. Aenean ac scelerisque sem, et pharetra diam.';
 
   test('It should only return words that are immediately followed by a space', () => {
-    expect(noPunctuation(lorem)).toStrictEqual([ 'Lorem ', 'ipsum ', 'dolor ', 'sit ', 'consectetur ', 'adipiscing ', 'Cras ', 'lacinia ', 'vel ', 'massa ', 'sed ', 'Nunc ', 'faucibus ', 'iaculis ', 'a ', 'scelerisque ', 'enim ', 'condimentum ', 'Aenean ', 'ac ', 'scelerisque ', 'et ', 'pharetra ' ]);
+    expect(noPunctuation(lorem)).toStrictEqual(['Lorem ', 'ipsum ', 'dolor ', 'sit ', 'consectetur ', 'adipiscing ', 'Cras ', 'lacinia ', 'vel ', 'massa ', 'sed ', 'Nunc ', 'faucibus ', 'iaculis ', 'a ', 'scelerisque ', 'enim ', 'condimentum ', 'Aenean ', 'ac ', 'scelerisque ', 'et ', 'pharetra ']);
     expect(noPunctuation(lorem).length).toStrictEqual(23);
     expect(noPunctuation('Given by our hand in the meadow that is called Runnymede, between Windsor and Staines, on the fifteenth day of June in the seventeenth year of our reign (i.e. 1215: the new regnal year began on 28 May).')).toEqual(expect.arrayContaining(['Given ', 'by ', 'our ', 'hand ', 'in ', 'the ', 'meadow ', 'that ', 'is ', 'called ', 'between ', 'Windsor ', 'and ', 'on ', 'the ', 'fifteenth ', 'day ', 'of ', 'June ', 'in ', 'the ', 'seventeenth ', 'year ', 'of ', 'our ', 'reign ', 'the ', 'new ', 'regnal ', 'year ', 'began ', 'on ', '28 ']));
   });
