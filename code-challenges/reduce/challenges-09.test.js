@@ -10,13 +10,12 @@ Note: You may not use the array's built-in length property.
 
 const countNumberOfElements = (arr) => {
   // Solution code here...
-  let arr2 = arr.reduce((acc,val,index)=>{
-acc = acc + val;
-return acc
+  let arr2 = arr.reduce((acc, val, index) => {
+    acc = acc + 1;
+    return acc
 
 
-},0)
-console.log(acc);
+  }, 0)
   return arr2
 };
 
@@ -44,7 +43,8 @@ let starWarsData = [{
   skin_color: 'gold',
   eye_color: 'yellow',
   birth_year: '112BBY',
-  gender: 'n/a'},
+  gender: 'n/a'
+},
 {
   name: 'R2-D2',
   height: '96',
@@ -78,10 +78,11 @@ let starWarsData = [{
 
 const returnNames = (arr) => {
   // Solution code here...
-  let names = arr.reduce((acc,val,index)=>{
-    acc = val.name
-  },{})
-  // returnNames(names) 
+  let names = arr.reduce((acc, val, index) => {
+    acc.push(val.name);
+    return acc
+  }, [])
+  return names
 };
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -93,6 +94,12 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 
 const reversedString = (str) => {
   // Solution code here...
+  const toSplit = str.split('');
+  const reversed = toSplit.reduce((acc, val) => {
+    return val + acc
+  }, '')
+
+  return reversed
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -146,6 +153,13 @@ const characters = [
 
 const countNumberOfChildren = (arr) => {
   // Solution code here...
+  let numOfCildren = arr.reduce((acc,val )=>{
+    if (val.children){
+      acc = acc + val.children.length;
+    }
+    return acc;
+  },0)
+  return numOfCildren;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -256,7 +270,7 @@ describe('Testing challenge 1', () => {
 
 describe('Testing challenge 2', () => {
   test('It should return an array continaing the names of the characters', () => {
-    expect(returnNames(starWarsData)).toStrictEqual([ 'Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader', 'Leia Organa' ]);
+    expect(returnNames(starWarsData)).toStrictEqual(['Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader', 'Leia Organa']);
     expect(returnNames(starWarsData).length).toStrictEqual(5);
   });
 });
@@ -275,7 +289,7 @@ describe('Testing challenge 4', () => {
 
 describe('Testing challenge 5', () => {
   test('It should return the average of the numbers in the array', () => {
-    expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
+    expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85])).toStrictEqual(64);
   });
 });
 
@@ -293,7 +307,7 @@ describe('Testing challenge 7', () => {
 
 describe('Testing challenge 8', () => {
   test('It should return an array containing the names of the children', () => {
-    expect(extractChildren(characters)).toStrictEqual([ 'Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras' ]);
+    expect(extractChildren(characters)).toStrictEqual(['Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras']);
     expect(extractChildren(characters).length).toStrictEqual(10);
   });
 });
