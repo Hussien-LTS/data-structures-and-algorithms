@@ -2,32 +2,28 @@
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1
-
 Write a function named firstLetters that takes in an array of strings and returns an array containing only the first letter of each string.
-
 For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 'w', 'w', ':']
 ------------------------------------------------------------------------------------------------ */
 
 const firstLetters = (arr) => {
   // Solution code here...
   let letters = arr.map( value => {
-    return value.charAt(0);
- });
- return letters
+     return value.charAt(0);
+  });
+  return letters
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
-
 Write a function named findHappiness that takes in an array of strings and returns an array containing only the strings from the input array that contain ":)".
-
 For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this is great :)', ':)))))']
 ------------------------------------------------------------------------------------------------ */
 
 const findHappiness = (arr) => {
   // Solution code here...
   let output = [];
-  let wanted = arr.map(value => {
+  let smileyFace = arr.map(value => {
   if (value.includes(':)')){
       output.push(value);
   }      
@@ -38,23 +34,19 @@ const findHappiness = (arr) => {
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
-
 Write a function named standardizePhoneNumbers that takes in an array of phone number strings in (XXX) XXX-XXXX format and returns an array with the phone number strings in XXXXXXXXXX format.
-
 For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 const standardizePhoneNumbers = (arr) => {
-  // Solution code here...
-  let number = arr.map( number => number.substring(1,4)+number.substring(6,9)+number.substring(10,14))
+    // Solution code here...
+    let number = arr.map( number => number.substring(1,4)+number.substring(6,9)+number.substring(10,14))
     return number
-};
+  };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
-
 Write a function named onlyOddChars that takes in a string and returns only the odd-index characters from that string.
-
 For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
@@ -72,19 +64,22 @@ const onlyOddChars = (str) => {
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
-
 Write a function named allHappy that takes in an array of strings and returns a Boolean indicating whether all those strings contain ":)".
 ------------------------------------------------------------------------------------------------ */
 
 const allHappy = (arr) => {
   // Solution code here...
+  let output = true
+  arr.forEach( value => {
+    output = output && value.includes(':)');
+  })
+  return output
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
-
 Write a function named findAnything that takes in an array of strings, along with a target string. Return an array containing only those strings from the original array that contain the target string.
------------------------------------------------------------------------------------------------- */
+------------------------------ ------------------------------------------------------------------ */
 
 const findAnything = (arr, target) => {
   // Solution code here...
@@ -94,30 +89,31 @@ const findAnything = (arr, target) => {
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7
-
 Write a function named findEvery that takes in an array of strings, along with a target string. Return a Boolean based on whether or not every string in the array contains the target string.
 ------------------------------------------------------------------------------------------------ */
 
 const findEvery = (arr, target) => {
   // Solution code here...
+  let output = true;
+  let found = arr.map( value => {
+    output = output && value.includes(target);
+  })
+  return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8
-
 We've been testing a new course enrollment system, and we think we have the bugs worked out, but in the meantime, Brook enrolled himself in a bunch of different classes to test if it was working.
-
 Write a function named unenrollBrook that takes in a two-dimensional array, where each array represents one course's roster and is an array of strings of the names of the people in that course.
-
 Return a two-dimensional array with the same roster, but where anyone whose name includes Brook is removed from every course.
-
 For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again', 'still Brook']] returns [['Actual Person'], ['Human Person']]
 ------------------------------------------------------------------------------------------------ */
 
 const unenrollBrook = (arr) => {
   // Solution code here...
+  return arr.map( value =>value.filter( brook => !brook.includes('Brook')))
+  
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
 
