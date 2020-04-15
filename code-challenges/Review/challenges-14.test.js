@@ -100,11 +100,29 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
-  let sorted = arr.sort(property => property.price)
-  return sorted
-};
-
+    // Solution code here...
+  
+    let arr2 = arr.sort ( (a,b) => 
+      {
+        if (property === 'name')
+        {
+          if (a.name > b.name)
+          return 1;
+          else 
+          return -1;
+        }
+        else if (property === 'price')
+        {
+          if (a.price > b.price)
+          return 1;
+          else 
+          return -1;
+        }
+      });
+      
+  
+      return arr2;
+  };
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 Write a function that determines if a given URL is secure, beginning with https://
@@ -135,9 +153,36 @@ Here is a sample board:
 ------------------------------------------------------------------------------------------------ */
 
 const detectTicTacToeWin = (board) => {
-  // Solution code here...
-};
-
+    // Solution code here...
+  
+    const helper = ((row1, col1, row2, col2, row3, col3) =>
+    {
+  
+      return board[row1][col1] !== '' && 
+        board[row1][col1] === board[row2][col2] &&
+        board[row2][col2] === board[row3][col3];
+      });
+  
+      //First row ( 0,0,0) , 1st ,2nd and 3rd columns (0,1,2)
+      if (helper(0,0,0,1,0,2)) return true;
+      //Second row (1,1,1) , 1st ,2nd and 3rd columns (0,1,2)
+      else if (helper(1,0,1,1,1,2)) return true;
+      //Third row (2,2,2) , 1st ,2nd and 3rd columns (0,1,2)
+      else if (helper(2,0,2,1,2,2)) return true;
+      //First Col ( 0,0,0) , 1st ,2nd and 3rd rows (0,1,2)
+      else if (helper(0,0,1,0,2,0)) return true;
+      //Second Col (1,1,1) , 1st ,2nd and 3rd rows (0,1,2)
+      else if (helper(0,1,1,1,2,1)) return true;
+      //Third Col (2,2,2) , 1st ,2nd and 3rd rows (0,1,2)
+      else if (helper(0,2,1,2,2,2)) return true;
+      //First Diogonal
+      else if (helper(0,0,1,1,2,2)) return true;
+      //Second Diogonal
+      else if (helper(0,2,1,1,2,0)) return true;
+      else
+      return false;
+      
+  };
 /* ------------------------------------------------------------------------------------------------
 TESTS
 All the code below will verify that your functions are working to solve the challenges.
