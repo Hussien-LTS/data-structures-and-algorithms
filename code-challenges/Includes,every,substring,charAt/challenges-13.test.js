@@ -112,6 +112,7 @@ For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again'
 const unenrollBrook = (arr) => {
   // Solution code here...
   return arr.map( value =>value.filter( brook => !brook.includes('Brook')))
+  
 };
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
