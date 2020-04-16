@@ -107,6 +107,9 @@ The top row of the board is considered row zero and row numbers increase as they
 
 const battleship = (board, row, col) => {
   //  Solution code here...
+  return board[row][col] === '#'? 'hit':'miss';
+
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -142,6 +145,15 @@ const weeklyTemperatures = [
 
 const averageDailyTemperature = (weather) => {
   // Solution code here...
+  let result = {sum:0, count:0};
+  for(let i=0; i < weather.length; i++){
+    for(let j=0; j < weather[i].length; j++){
+      result.sum += weather[i][j];
+      result.count += 1;
+    }
+  }
+  return result.sum/result.count;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -163,7 +175,17 @@ let lowestWeeklyTemperatureData = [
 
 const lowestWeeklyAverage = (weather) => {
   // Solution code here...
+  let lowestAvg = Number.MAX_VALUE;
+  for(let i = 0; i < weather.length; i++){
+    let currentSum = 0;
+    for(let j = 0; j < weather[i].length; j++){
+      currentSum += weather[i][j];
+    }
+    lowestAvg = Math.min(currentSum/weather[i].length, lowestAvg);
+  }
+  return lowestAvg;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8
@@ -179,6 +201,13 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 
 const excel = (str) => {
   // Solution code here...
+  let groupedString = str.split('\n');
+  return groupedString.reduce((result, string) => {
+    let spl = string.split(',');
+    result.push(spl.reduce((sum, val) => sum + parseInt(val), 0));
+    return result;
+  }, []);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
