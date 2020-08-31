@@ -158,6 +158,21 @@ Return the resulting output array.
 
 const fizzbuzz = (arr) => {
   // Solution code here...
+    arr.forEach((value,index)=>{
+        if(value % 5 === 0 && value % 3 === 0){
+            arr[index] = 'Fizz Buzz';
+        }else if(value % 5 === 0){
+            arr[index] = 'Buzz';
+        }else if(value % 3 === 0 ){
+            arr[index] = 'Fizz';
+            
+    }else{
+        arr[index]= value;
+    }
+   
+    
+})
+return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
